@@ -1,0 +1,31 @@
+:root {
+  --primary: #ffde59;
+  --secondary: #ffbd59;
+  --third: #ff914d;
+  --bg: #222;
+}
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+
+  background-color: var(--bg);
+  color: var(--primary);
+}
+
+
+* {
+  box-sizing: border-box;
+}
+
+*::selection {
+  background-color: rgba(250, 250, 250, 0.122);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
