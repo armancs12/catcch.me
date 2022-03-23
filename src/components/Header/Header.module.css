@@ -1,0 +1,21 @@
+.Header {
+  background-color: var(--bg);
+  height: 80px;
+}
+
+.HeaderContainer {
+  position: relative;
+}
+
+@media (max-width: 992px) {
+  .ResponsiveNavbar {
+    position: absolute;
+    width: 50%;
+    top: 50px;
+    right: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    background-color: #151515;
+    border-radius: 10px;
+  }
+}
