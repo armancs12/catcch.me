@@ -8,8 +8,9 @@ type Props = {
 };
 
 const sizeMap = {
-  small: ["LogoSmall", 23 * 2],
-  medium: ["LogoMedium", 23 * 3],
+
+  small: ["LogoSmall", 23 * 1.25],
+  medium: ["LogoMedium", 23 * 2.625],
   large: ["LogoLarge", 23 * 4],
 };
 
