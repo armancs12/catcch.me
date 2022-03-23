@@ -41,8 +41,8 @@ const Header: React.FC = () => {
             <HeaderLink href="/about" text="About" />
           </Nav>
           <Nav>
-            <HeaderLink href="/login" text="Login" />
-            <HeaderLink href="/register" text="Register" />
+            <HeaderLink href="/auth/login" text="Login" />
+            <HeaderLink href="/auth/register" text="Register" />
           </Nav>
         </Navbar.Collapse>
       </Container>

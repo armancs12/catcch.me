@@ -1,0 +1,72 @@
+.AuthForm {
+  max-width: 480px;
+  margin: 60px auto;
+  padding: 1rem;
+  border-radius: 10px;
+
+  border: 1px solid var(--secondary);
+}
+
+.AuthForm input {
+  border-color: rgba(255, 255, 255, 0.55);
+  background-color: var(--bg);
+  color: white;
+}
+
+.AuthForm input:focus {
+  border-color: var(--secondary);
+  background-color: var(--bg);
+  color: white;
+  box-shadow: 0 0 0 0.25rem rgb(255, 189, 89, 0.25);
+}
+
+.AuthForm input::selection {
+  background-color: var(--third);
+  color: white;
+}
+
+.AuthForm h1 {
+  margin: .5rem 0;
+  text-align: center;
+}
+
+.AuthForm form {
+  margin-top: 2rem;
+}
+
+
+.AuthForm form button {
+  margin-top: .1rem;
+  width: 100%;
+  background-color: var(--primary);
+  color: var(--bg);
+}
+
+.AuthForm form button:hover {
+  background-color: var(--primary);
+  color: var(--bg);
+}
+
+.AuthFormDivider {
+  margin: 2rem 0;
+  position: relative;
+}
+
+.AuthFormDivider span {
+  position: absolute;
+  left: calc(50% - 5px);
+  bottom: -10px;
+  padding: 10px 30px; 
+  margin: -10px -30px;
+  background-color: var(--bg);
+}
+
+.GoogleButton {
+  width: 100%;
+  border-color: var(--primary);
+}
+
+.GoogleButton:hover {
+  width: 100%;
+  border-color: var(--secondary);
+}
