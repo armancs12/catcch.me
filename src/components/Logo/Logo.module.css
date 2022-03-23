@@ -1,0 +1,24 @@
+.Logo {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  font-weight: bold;
+}
+
+.Logo span {
+  margin: 0 10px;
+}
+
+.LogoSmall {
+  font-size: 2rem;
+}
+
+.LogoMedium {
+  line-height: 1.15;
+  font-size: 3rem;
+}
+
+.LogoLarge {
+  line-height: 1.15;
+  font-size: 4rem;
+}
