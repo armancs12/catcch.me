@@ -4,7 +4,11 @@ import AuthForm from "../../components/AuthForm";
 const LoginPage: NextPage = () => {
   return (
     <main>
-        <AuthForm title="Login" />
+      <AuthForm
+        title="Login"
+        emailButtonText="Login with Email"
+        googleButtonText="Login with Google"
+      />
     </main>
   );
 };
