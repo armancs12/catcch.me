@@ -1,7 +1,7 @@
 import { NextPage } from "next";
 import Link from "next/link";
-import AuthForm from "../../components/AuthForm";
-import styles from "../../styles/RegisterPage.module.css"
+import AuthForm from "@client/components/AuthForm";
+import styles from "@client/styles/RegisterPage.module.css"
 
 const RegisterPage: NextPage = () => {
   return (

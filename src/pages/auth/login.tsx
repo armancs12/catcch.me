@@ -1,5 +1,5 @@
 import { NextPage } from "next";
-import AuthForm from "../../components/AuthForm";
+import AuthForm from "@client/components/AuthForm";
 
 const LoginPage: NextPage = () => {
   return (

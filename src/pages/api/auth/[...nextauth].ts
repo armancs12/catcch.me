@@ -1,8 +1,8 @@
 import NextAuth from "next-auth";
 import EmailProvider, { EmailConfig } from "next-auth/providers/email";
 import { PrismaAdapter } from "@next-auth/prisma-adapter";
-import database from "../../../server-utils/database";
-import sendEmail from "../../../server-utils/send-email";
+import database from "@server/database";
+import sendEmail from "@server/send-email";
 
 export default NextAuth({
   adapter: PrismaAdapter(database),

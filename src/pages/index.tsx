@@ -1,7 +1,6 @@
 import type { NextPage } from "next";
-import styles from "../styles/Home.module.css";
-import Image from "next/image";
-import Logo from "../components/Logo";
+import styles from "@client/styles/Home.module.css";
+import Logo from "@client/components/Logo";
 
 const Home: NextPage = () => {
   return (

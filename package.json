@@ -12,7 +12,7 @@
     "prisma-generate": "prisma generate"
   },
   "prisma": {
-    "schema": "./src/server-utils/database/schema.prisma"
+    "schema": "./src/server/database/schema.prisma"
   },
   "dependencies": {
     "@next-auth/prisma-adapter": "^1.0.3",

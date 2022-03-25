@@ -1,9 +1,9 @@
 import "bootstrap/dist/css/bootstrap.min.css";
-import "../styles/globals.css";
+import "@client/styles/globals.css";
 
 import type { AppProps } from "next/app";
 import Head from "next/head";
-import Header from "../components/Header";
+import Header from "@client/components/Header";
 import { Container, SSRProvider } from "react-bootstrap";
 
 function App({ Component, pageProps }: AppProps) {
