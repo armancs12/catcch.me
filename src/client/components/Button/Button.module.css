@@ -1,0 +1,11 @@
+.Button {
+  margin-top: 0.1rem;
+  width: 100%;
+  background-color: var(--primary);
+  color: var(--bg);
+}
+
+.Button:hover {
+  background-color: var(--primary);
+  color: var(--bg);
+}

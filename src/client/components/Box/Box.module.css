@@ -1,0 +1,20 @@
+.Box {
+  max-width: 480px;
+  margin: 60px auto;
+  padding: 1.5rem 1rem;
+  border-radius: 10px;
+
+  border: 1px solid var(--secondary);
+  text-align: center;
+}
+
+.BoxTitle {
+  margin: 0.5rem 0;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.BoxDescription {
+  margin-bottom: 1.5rem;
+}
