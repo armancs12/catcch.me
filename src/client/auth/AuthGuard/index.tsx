@@ -22,11 +22,13 @@ const AuthGuard: React.FC<Props> = ({
   if (status !== requiredStatus) {
     if (status === "authenticated") {
       router.push(redirect.redirectOnAuth ? redirect.redirectOnAuth : "/");
-    } else {
-      router.push(
-        redirect.redirectOnAnon ? redirect.redirectOnAnon : "/auth/login"
-      );
+      return null;
     }
+    
+    router.push(
+      redirect.redirectOnAnon ? redirect.redirectOnAnon : "/auth/login"
+    );
+    return null;
   }
 
   return <>{children}</>;
