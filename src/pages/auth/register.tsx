@@ -17,8 +17,7 @@ const RegisterPage: NextPage = () => {
             <Link href={"/about"}>Learn more</Link>)
           </>
         }
-        emailButtonText="Register with Email"
-        googleButtonText="Register with Google"
+        providerButtonTextPrefix="Register with"
       />
       <p className={styles.FormFooter}>Already have an account? <Link href="/auth/login">Login</Link></p>
     </main>

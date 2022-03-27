@@ -7,8 +7,7 @@ const LoginPage: NextPage = () => {
     <main>
       <AuthForm
         title="Login"
-        emailButtonText="Login with Email"
-        googleButtonText="Login with Google"
+        providerButtonTextPrefix="Login with"
       />
     </main>
   );

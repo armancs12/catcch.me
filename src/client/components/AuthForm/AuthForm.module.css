@@ -61,12 +61,12 @@
   background-color: var(--bg);
 }
 
-.GoogleButton {
+.OAuthButton {
   width: 100%;
   border-color: var(--primary);
 }
 
-.GoogleButton:hover {
+.OAuthButton:hover {
   width: 100%;
   border-color: var(--secondary);
 }
