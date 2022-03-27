@@ -9,14 +9,20 @@ export type WithAuthProps<T> = T & Partial<{
     redirectOnAnon?: string;
 }>
 
-export const asAuthenticated = (Page: NextPage) => {
-    const PageWithAuthProps = Page as WithAuthProps<NextPage>;
-    PageWithAuthProps.authStatus = "authenticated" 
-    return PageWithAuthProps
-}
+type Options = Partial<{
+    redirect: string;
+}>
 
-export const asUnauthenticated = (Page: NextPage) => {
-    const PageWithAuthProps = Page as WithAuthProps<NextPage>;
-    PageWithAuthProps.authStatus = "unauthenticated" 
-    return PageWithAuthProps
-}
+export const asAuthenticated = (Page: NextPage, options: Options = {}) => {
+  const PageWithAuthProps = Page as WithAuthProps<NextPage>;
+  PageWithAuthProps.authStatus = "authenticated";
+  PageWithAuthProps.redirectOnAuth = options.redirect;
+  return PageWithAuthProps;
+};
+
+export const asUnauthenticated = (Page: NextPage, options: Options = {}) => {
+  const PageWithAuthProps = Page as WithAuthProps<NextPage>;
+  PageWithAuthProps.authStatus = "unauthenticated";
+  PageWithAuthProps.redirectOnAnon = options.redirect;
+  return PageWithAuthProps;
+};
