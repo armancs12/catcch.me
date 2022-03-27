@@ -28,7 +28,7 @@ function App({ Component, pageProps }: LocalAppProps) {
         <Header />
         <Container>
           {Component.authStatus ? (
-            <AuthGuard status={Component.authStatus}>
+            <AuthGuard authStatus={Component.authStatus} redirect={Component.redirect}>
               <Component {...pageProps} />
             </AuthGuard>
           ) : (
