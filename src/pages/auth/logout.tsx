@@ -1,3 +1,4 @@
+import { asAuthenticated } from "@client/auth";
 import Box from "@client/components/Box";
 import Button from "@client/components/Button";
 import { signOut } from "next-auth/react"
@@ -10,4 +11,4 @@ const LogoutPage = () => {
     )
 }
 
-export default LogoutPage;
+export default asAuthenticated(LogoutPage);

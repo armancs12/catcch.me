@@ -2,6 +2,7 @@ import { NextPage } from "next";
 import Link from "next/link";
 import AuthForm from "@client/components/AuthForm";
 import styles from "@client/styles/RegisterPage.module.css"
+import { asUnauthenticated } from "@client/auth";
 
 const RegisterPage: NextPage = () => {
   return (
@@ -24,4 +25,5 @@ const RegisterPage: NextPage = () => {
   );
 };
 
-export default RegisterPage;
+export default asUnauthenticated(RegisterPage);
+

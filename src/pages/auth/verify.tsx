@@ -1,3 +1,4 @@
+import { asUnauthenticated } from "@client/auth";
 import Box from "@client/components/Box";
 
 const VerifyPage = () => {
@@ -9,4 +10,4 @@ const VerifyPage = () => {
   );
 };
 
-export default VerifyPage;
+export default asUnauthenticated(VerifyPage);

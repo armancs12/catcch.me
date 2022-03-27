@@ -1,5 +1,6 @@
 import { NextPage } from "next";
 import AuthForm from "@client/components/AuthForm";
+import { asUnauthenticated } from "@client/auth";
 
 const LoginPage: NextPage = () => {
   return (
@@ -13,4 +14,4 @@ const LoginPage: NextPage = () => {
   );
 };
 
-export default LoginPage;
+export default asUnauthenticated(LoginPage);
