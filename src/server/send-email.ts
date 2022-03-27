@@ -11,7 +11,6 @@ type Options = {
 };
 
 function makeSendEmail() {
-  nodemailer.createTransport();
   const transport = nodemailer.createTransport(emailServer, {
     secure: true,
     from: emailFrom,
@@ -20,6 +19,7 @@ function makeSendEmail() {
   return async ({ to, subject, body }: Options) => {
     await transport.sendMail({
       to,
+      subject,
       html: body,
       text: body,
       from: emailFrom,
