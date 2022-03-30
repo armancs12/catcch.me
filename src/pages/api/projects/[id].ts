@@ -1,7 +1,5 @@
-import { User } from "next-auth";
 import apiRouter from "@server/api-router";
 import { asAuthenticated } from "@server/api-router/middlewares";
-import { getSession } from "next-auth/react";
 import database from "@server/database";
 import { NotFound } from "http-errors";
 import { z } from "zod";
@@ -15,8 +13,7 @@ const updateProjectSchema = z.object({
 });
 
 router.get(async (req, res) => {
-  const session = await getSession({ req });
-  const sessionUser = session?.user as User;
+  const sessionUser = req.getUser();
 
   const id = typeof req.query.id === "string" ? req.query.id : req.query.id[0];
   const project = await database.project.findFirst({
@@ -31,8 +28,7 @@ router.get(async (req, res) => {
 });
 
 router.put(async (req, res) => {
-  const session = await getSession({ req });
-  const sessionUser = session?.user as User;
+  const sessionUser = req.getUser();
 
   const id = typeof req.query.id === "string" ? req.query.id : req.query.id[0];
   const exist = await database.project.findFirst({
@@ -52,8 +48,7 @@ router.put(async (req, res) => {
 });
 
 router.delete(async (req, res) => {
-  const session = await getSession({ req });
-  const sessionUser = session?.user as User;
+  const sessionUser = req.getUser();
 
   const id = typeof req.query.id === "string" ? req.query.id : req.query.id[0];
   const exist = await database.project.findFirst({

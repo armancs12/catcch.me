@@ -1,8 +1,6 @@
-import { User } from "next-auth";
 import apiRouter from "@server/api-router";
 import { asAuthenticated } from "@server/api-router/middlewares";
 import database from "@server/database";
-import { getSession } from "next-auth/react";
 import { z } from "zod";
 
 const router = apiRouter();
@@ -14,8 +12,7 @@ const createProjectSchema = z.object({
 });
 
 router.get(async (req, res) => {
-  const session = await getSession({ req });
-  const sessionUser = session?.user as User;
+  const sessionUser = req.getUser();
 
   const projects = await database.project.findMany({
     where: { userId: sessionUser.id },
@@ -25,9 +22,8 @@ router.get(async (req, res) => {
 });
 
 router.post(async (req, res) => {
+  const sessionUser = req.getUser();
   const createProject = await createProjectSchema.parseAsync(req.body);
-  const session = await getSession({ req });
-  const sessionUser = session?.user as User;
 
   const project = await database.project.create({
     data: {
