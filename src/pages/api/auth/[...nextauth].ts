@@ -1,8 +1,19 @@
-import NextAuth from "next-auth";
+import NextAuth, { DefaultSession } from "next-auth";
 import EmailProvider, { EmailConfig } from "next-auth/providers/email";
 import { PrismaAdapter } from "@next-auth/prisma-adapter";
 import database from "@server/database";
 import sendEmail from "@server/send-email";
+import { User as PrismaUser } from "@prisma/client";
+
+declare module "next-auth" {
+  interface User extends PrismaUser {}
+
+  interface Session {
+    user: DefaultSession["user"] & {
+      id: string;
+    };
+  }
+}
 
 export default NextAuth({
   pages: {
@@ -10,8 +21,15 @@ export default NextAuth({
     signOut: "/auth/logout",
     newUser: "/auth/register",
     verifyRequest: "/auth/verify",
-    // error: "auth/error", // TODO: create error pages 
+    // error: "auth/error", // TODO: create error pages
   },
+  callbacks: {
+    session: ({ session, user }) => {
+      session.user.id = user.id;
+      return session;
+    },
+  },
+
   adapter: PrismaAdapter(database),
   secret: process.env.NEXTAUTH_SECRET,
   providers: [
