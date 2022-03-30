@@ -5,6 +5,10 @@ import { APIMiddleware } from "../@types";
 const asAuthenticated: APIMiddleware = async (req, res, next) => {
   const session = await getSession({ req });
   if (session != null) {
+    req.getUser = () => {
+      return session.user;
+    };
+
     return next();
   }
 
