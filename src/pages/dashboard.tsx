@@ -6,17 +6,44 @@ import { Col, Row } from "react-bootstrap";
 import styles from "@client/styles/DashboardPage.module.css";
 import { useSession } from "next-auth/react";
 import useSWR from "swr";
+import CreateProjectModal from "@client/components/CreateProjectModal";
+import { useState } from "react";
 
 const DashboardPage: NextPage = () => {
-  const { data } = useSWR("/api/projects", (url) =>
+  const [modalShow, setModalShow] = useState(false);
+  const { data, mutate } = useSWR("/api/projects", (url) =>
     fetch(url).then((data) => data.json())
   );
 
+  const handleModalClose = () => setModalShow(false);
+  const handleModalOpen = () => setModalShow(true);
+
+  const handleCreateProject = async (data: { name: string; url?: string }) => {
+    const response = await fetch("/api/projects", {
+      body: JSON.stringify(data),
+      method: "POST",
+      headers: {
+        "Content-type": "application/json; charset=UTF-8",
+      },
+    });
+
+    if (response.ok) {
+      mutate();
+    }
+  };
+
   return (
     <main>
+      <CreateProjectModal
+        show={modalShow}
+        onClose={handleModalClose}
+        onCreate={handleCreateProject}
+      />
       <div className="d-flex justify-content-between align-items-center">
         <h1 className={styles.Title}>Dashboard</h1>
-        <Button className="my-2">Add New Project</Button>
+        <Button className="my-2" onClick={() => handleModalOpen()}>
+          Add New Project
+        </Button>
       </div>
       <div className="mt-2 mt-md-4">
         {data && (

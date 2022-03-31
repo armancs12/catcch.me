@@ -20,7 +20,7 @@ const Button: React.FC<Props> = ({
   return (
     <BootstrapButton
       variant="dark"
-      className={cx(styles.Button, className, wide && styles.ButtonWide)}
+      className={cx(styles.Button, wide && styles.ButtonWide, className)}
       onClick={onClick}
       type={type}
     >
