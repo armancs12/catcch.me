@@ -1,0 +1,36 @@
+.ProjectCard {
+  display: block;
+  text-decoration: none;
+  border: 1px solid var(--third);
+  text-align: center;
+  border-radius: 10px;
+  height: 112px;
+}
+
+.ProjectCard:hover {
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+  cursor: pointer;
+}
+
+.ProjectCard h2 {
+  font-size: 21px;
+  padding: 18px 0;
+  font-weight: bold;
+}
+
+.ProjectCard p {
+  color: var(--secondary);
+}
+
+.OnlyTitle {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.OnlyTitle h2 {
+  font-size: 32px;
+  margin: 0;
+  padding: 0;
+}
