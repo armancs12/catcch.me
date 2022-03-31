@@ -1,6 +1,7 @@
 import type { NextPage } from "next";
 import styles from "@client/styles/Home.module.css";
 import Logo from "@client/components/Logo";
+import { asUnauthenticated } from "@client/auth";
 
 const Home: NextPage = () => {
   return (
@@ -11,4 +12,6 @@ const Home: NextPage = () => {
   );
 };
 
-export default Home;
+export default asUnauthenticated(Home, {
+  redirect: "/dashboard"
+});
