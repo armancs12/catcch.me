@@ -1,8 +1,11 @@
 .Button {
   margin-top: 0.1rem;
-  width: 100%;
   background-color: var(--primary);
   color: var(--bg);
+}
+
+.ButtonWide {
+  width: 100%;
 }
 
 .Button:hover {
