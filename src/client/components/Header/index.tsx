@@ -30,7 +30,7 @@ const Header: React.FC = () => {
       variant="dark"
     >
       <Container className={styles.HeaderContainer}>
-        <Link href="/" passHref>
+        <Link href={isAuthenticated ? "/dashboard" : "/"} passHref>
           <Navbar.Brand>
             <Logo size="small" />
           </Navbar.Brand>
