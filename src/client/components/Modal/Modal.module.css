@@ -1,0 +1,35 @@
+.Modal {
+  background-color: var(--bg) !important;
+  padding: 1.5rem 1rem;
+  border-radius: 10px;
+  border: 1px solid var(--secondary);
+  position: relative;
+}
+
+.ModalTitle {
+  margin: 0.5rem 0;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.ModalDescription {
+  margin-bottom: 1.5rem;
+}
+
+.CloseButton {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  opacity: 1;
+}
+
+.CloseButton:hover {
+  opacity: 1;
+}
+
+.CloseButton:focus {
+  opacity: 1;
+  color: var(--bg);
+  background-color: var(--primary);
+}

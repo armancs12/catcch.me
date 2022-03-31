@@ -16,7 +16,6 @@ body {
   color: var(--primary);
 }
 
-
 * {
   box-sizing: border-box;
 }
@@ -31,4 +30,8 @@ a {
 
 a:hover {
   color: var(--third);
+}
+
+.modal-content-transparent .modal-content {
+  background-color: transparent;
 }
