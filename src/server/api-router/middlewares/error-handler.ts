@@ -1,4 +1,5 @@
 import createError, { HttpError, isHttpError } from "http-errors";
+import { ZodError } from "zod";
 import { APIErrorHandler } from "../@types";
 
 const getAsHttpError = (error: any) => {
@@ -6,12 +7,16 @@ const getAsHttpError = (error: any) => {
     return error as HttpError;
   }
 
+  if (error instanceof ZodError) {
+    return createError(400);
+  }
+
   return createError(error);
 };
 
 const errorHandler = (args: { exposeStack: boolean }) => {
   const onError: APIErrorHandler = (error, req, res) => {
-	const serverErrorMessage = "Something went wrong!";
+    const serverErrorMessage = "Something went wrong!";
     const httpError = getAsHttpError(error);
 
     if (httpError.headers) {
