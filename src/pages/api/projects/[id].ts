@@ -1,6 +1,7 @@
 import apiRouter from "@server/api-router";
 import { asAuthenticated } from "@server/api-router/middlewares";
 import database from "@server/database";
+import getDynamicParam from "@server/get-dynamic-param";
 import { NotFound } from "http-errors";
 import { z } from "zod";
 
@@ -14,8 +15,8 @@ const updateProjectSchema = z.object({
 
 router.get(async (req, res) => {
   const sessionUser = req.getUser();
+  const id = getDynamicParam(req, "id");
 
-  const id = typeof req.query.id === "string" ? req.query.id : req.query.id[0];
   const project = await database.project.findFirst({
     where: { id, userId: sessionUser.id },
   });
@@ -29,8 +30,8 @@ router.get(async (req, res) => {
 
 router.put(async (req, res) => {
   const sessionUser = req.getUser();
+  const id = getDynamicParam(req, "id");
 
-  const id = typeof req.query.id === "string" ? req.query.id : req.query.id[0];
   const exist = await database.project.findFirst({
     where: { id, userId: sessionUser.id },
   });
@@ -49,8 +50,8 @@ router.put(async (req, res) => {
 
 router.delete(async (req, res) => {
   const sessionUser = req.getUser();
+  const id = getDynamicParam(req, "id");
 
-  const id = typeof req.query.id === "string" ? req.query.id : req.query.id[0];
   const exist = await database.project.findFirst({
     where: { id, userId: sessionUser.id },
   });
