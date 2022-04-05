@@ -71,9 +71,9 @@ model Project {
 }
 
 enum ProjectLogType {
-  Info
-  Warning
-  Error
+  INFO
+  WARNING
+  ERROR
 }
 
 model ProjectLog {
