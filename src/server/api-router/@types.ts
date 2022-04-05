@@ -2,14 +2,14 @@ import { NextApiRequest, NextApiResponse } from "next";
 import { SessionUser, User } from "next-auth";
 import { Middleware, NextConnect, ErrorHandler } from "next-connect";
 
-type Request = NextApiRequest & {
+export type APIRequest = NextApiRequest & {
   getUser(): SessionUser;
 };
 
-type Response = NextApiResponse;
+export type APIResponse = NextApiResponse;
 
-export type APIRouter = NextConnect<Request, Response>;
+export type APIRouter = NextConnect<APIRequest, APIResponse>;
 
-export type APIMiddleware = Middleware<Request, Response>;
+export type APIMiddleware = Middleware<APIRequest, APIResponse>;
 
-export type APIErrorHandler = ErrorHandler<Request, Response>;
+export type APIErrorHandler = ErrorHandler<APIRequest, APIResponse>;
