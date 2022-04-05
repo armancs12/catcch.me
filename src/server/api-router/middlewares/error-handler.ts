@@ -2,13 +2,21 @@ import createError, { HttpError, isHttpError } from "http-errors";
 import { ZodError } from "zod";
 import { APIErrorHandler } from "../@types";
 
+declare module "http-errors" {
+  interface HttpError<N extends number = number> {
+    formErrors: N extends 400 ? ZodError["formErrors"] : undefined;
+  }
+}
+
 const getAsHttpError = (error: any) => {
   if (isHttpError(error)) {
     return error as HttpError;
   }
 
   if (error instanceof ZodError) {
-    return createError(400);
+    const httpError = createError(400);
+    httpError.formErrors = error.flatten();
+    return httpError;
   }
 
   return createError(error);
@@ -28,6 +36,7 @@ const errorHandler = (args: { exposeStack: boolean }) => {
     res.status(httpError.status).json({
       errorMessage:
         httpError.status !== 500 ? httpError.message : serverErrorMessage,
+      formErrors: httpError.formErrors,
       stack: args.exposeStack ? error.stack : undefined,
     });
   };
