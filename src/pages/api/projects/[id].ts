@@ -1,8 +1,9 @@
 import apiRouter from "@server/api-router";
+import { APIRequest } from "@server/api-router/@types";
 import { asAuthenticated } from "@server/api-router/middlewares";
 import database from "@server/database";
 import getDynamicParam from "@server/get-dynamic-param";
-import { NotFound } from "http-errors";
+import createHttpError from "http-errors";
 import { z } from "zod";
 
 const router = apiRouter();
@@ -13,51 +14,43 @@ const updateProjectSchema = z.object({
   url: z.string().url().optional(),
 });
 
-router.get(async (req, res) => {
-  const sessionUser = req.getUser();
-  const id = getDynamicParam(req, "id");
-
+const getProjectOrFail = async (req: APIRequest, id: string) => {
   const project = await database.project.findFirst({
-    where: { id, userId: sessionUser.id },
+    where: { id, userId: req.getUser().id },
   });
 
   if (!project) {
-    throw new NotFound("Project not found!");
+    throw createHttpError(404);
   }
 
+  return project;
+};
+
+router.get(async (req, res) => {
+  const id = getDynamicParam(req, "id");
+  const project = await getProjectOrFail(req, id);
   res.json(project);
 });
 
 router.put(async (req, res) => {
-  const sessionUser = req.getUser();
+  const updateProject = await updateProjectSchema.parseAsync(req.body);
   const id = getDynamicParam(req, "id");
+  await getProjectOrFail(req, id);
 
-  const exist = await database.project.findFirst({
-    where: { id, userId: sessionUser.id },
-  });
-  if (!exist) {
-    throw new NotFound("Project not found!");
-  }
-
-  const updated = await updateProjectSchema.parseAsync(req.body);
   const project = await database.project.update({
     where: { id },
-    data: updated,
+    data: {
+      name: updateProject.name,
+      url: updateProject.url,
+    },
   });
 
   res.json(project);
 });
 
 router.delete(async (req, res) => {
-  const sessionUser = req.getUser();
   const id = getDynamicParam(req, "id");
-
-  const exist = await database.project.findFirst({
-    where: { id, userId: sessionUser.id },
-  });
-  if (!exist) {
-    throw new NotFound("Project not found!");
-  }
+  await getProjectOrFail(req, id);
 
   const project = await database.project.delete({
     where: { id },
