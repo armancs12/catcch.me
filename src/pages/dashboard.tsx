@@ -4,16 +4,13 @@ import ProjectCard from "@client/components/ProjectCard";
 import { NextPage } from "next";
 import { Col, Row } from "react-bootstrap";
 import styles from "@client/styles/DashboardPage.module.css";
-import { useSession } from "next-auth/react";
-import useSWR from "swr";
 import CreateProjectModal from "@client/components/CreateProjectModal";
 import { useState } from "react";
+import useSWR from "swr";
 
 const DashboardPage: NextPage = () => {
   const [modalShow, setModalShow] = useState(false);
-  const { data, mutate } = useSWR("/api/projects", (url) =>
-    fetch(url).then((data) => data.json())
-  );
+  const { data, mutate } = useSWR("/api/projects");
 
   const handleModalClose = () => setModalShow(false);
   const handleModalOpen = () => setModalShow(true);
