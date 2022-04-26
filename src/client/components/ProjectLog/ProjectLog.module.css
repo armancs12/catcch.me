@@ -1,0 +1,26 @@
+.Main {
+  background-color: var(--bg);
+  border: var(--primary) 1px solid;
+}
+
+.Header {
+  border-bottom: var(--secondary) 1px solid;
+}
+
+.Header h5 {
+  margin-bottom: 0;
+}
+
+.Title {
+  font-size: 20px;
+}
+
+.Label {
+  margin-top: 10px;
+  margin-bottom: 5px;
+}
+
+.Info {
+  background-color: black;
+  padding: 10px;
+}
