@@ -4,8 +4,8 @@
   "private": true,
   "scripts": {
     "dev": "npm run prisma-generate && next dev",
-    "build": "next build",
-    "start": "npm run prisma-migrate && next start",
+    "build": "npm run prisma-generate && next build",
+    "start": "next start",
     "lint": "next lint",
     "prisma-migrate": "dotenv -e .env.production.local prisma migrate deploy",
     "prisma-migrate-dev": "dotenv -e .env.development.local prisma migrate dev",
